@@ -1,0 +1,27 @@
+/* OuterMost Container*/
+.app-container {
+  /* contains <app-nav> and <main> */
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.main-container {
+  /* contains <app-header> and <router-outlet> */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+}
+/* 
+.content-container::-webkit-scrollbar {
+  width: 4px;
+} */

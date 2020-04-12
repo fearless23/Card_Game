@@ -1,0 +1,23 @@
+<div class="dropdown-container" style="min-width: 13.18em;">
+
+  <div class="fbox-btn">
+    <span class="heading">{{heading}}</span>
+    <span class="selected">{{selected}}</span>
+    <span class="icon-container">
+      <svg class="icon sm" viewBox="0 0 50 50">
+        <path d="M2 13.5h46l-23 23z" />
+      </svg>
+    </span>
+  </div>
+
+  <div class="dropdown active-on-hover top parent-width">
+    <header class="header">Select a {{heading}}</header>
+    <ul class="menu">
+      <li [class.active]="selected===''" (click)="onSelect('')">Any</li>
+      <ng-container *ngFor="let link of links">
+        <li [class.active]="selected===link" (click)="onSelect(link)">{{link}}</li>
+      </ng-container>
+    </ul>
+  </div>
+
+</div>

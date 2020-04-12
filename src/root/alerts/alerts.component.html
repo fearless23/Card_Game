@@ -1,0 +1,19 @@
+<ng-container *ngIf="length !== 0">
+  <div class="alerts-container">
+    <div *ngFor="let alert of alerts" class="alert {{ cssClass(alert) }}">
+      <span class="close" title="Close this Alert" (click)="removeAlert(alert)">
+        <svg class="icon">
+          <use xlink:href="assets/svg/icons.svg#icon-cross"></use>
+        </svg>
+      </span>
+
+      <div class="alert-icon">
+        <svg class="icon">
+          <use xlink:href="assets/svg/icons.svg#icon-bell"></use>
+        </svg>
+      </div>
+
+      <div class="content">{{ alert.message }}</div>
+    </div>
+  </div>
+</ng-container>

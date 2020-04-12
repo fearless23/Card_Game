@@ -1,0 +1,81 @@
+.alerts-container {
+  position: fixed;
+  left: 4.52em;
+  top: 1.19em;
+  z-index: 200;
+  margin: 2em;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.alert {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 20.41em;
+  padding: 1em;
+  margin-bottom: 1em;
+  box-sizing: border-box;
+  background: #fff;
+  border-top: 10px solid #4d5256;
+  transform-origin: 50% 0%;
+  box-shadow: 5px 13px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.alert .content {
+  padding: 0 0 0 1em;
+}
+
+span.close {
+  position: absolute;
+  cursor: pointer;
+  top: 10px;
+  right: 10px;
+  font-size: 1.59em;
+  line-height: 1;
+}
+
+.alert.success {
+  border-top-color: #2ca58d;
+}
+.alert.error {
+  border-top-color: #e62739;
+}
+.alert.info {
+  border-top-color: #00a8e8;
+}
+.alert.warning {
+  border-top-color: #eeff22;
+}
+
+.alert.show {
+  animation-name: flipInX;
+  animation-duration: 0.8s;
+}
+
+@keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -90deg);
+    transition-timing-function: ease-in;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 20deg);
+    transition-timing-function: ease-out;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -10deg);
+    transition-timing-function: ease-in;
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 5deg);
+    transition-timing-function: ease-out;
+  }
+
+  100% {
+    transform: perspective(400px);
+  }
+}

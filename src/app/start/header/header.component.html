@@ -1,0 +1,67 @@
+<div class="main-topbar">
+  <h1 class="page-title">Week Tweak</h1>
+
+  <div class="fbox">
+    <div
+      title="Add Project, Step or Task"
+      class="clickable icon-container"
+      [routerLink]="['/add-stuff']"
+    >
+      <svg class="icon icon-white">
+        <use xlink:href="assets/svg/icons.svg#icon-plus-fat"></use>
+      </svg>
+    </div>
+
+    <div title="Your Notifications" class="dropdown-container" dropdown>
+      <span
+        title="Notifications"
+        class="icon-container icon-dot"
+        (click)="dropNotification = !dropNotification"
+      >
+        <svg class="icon icon-white">
+          <use xlink:href="assets/svg/icons.svg#icon-bell"></use>
+        </svg>
+      </span>
+
+      <div class="dropdown" [class.is-active]="dropNotification">
+        <div class="menu-title">Notifications</div>
+        <ul class="menu">
+          <li routerLink="/profile">There are many notifications to go for</li>
+          <li routerLink="/help">There are many notifications to go for</li>
+          <li routerLink="/focus">
+            FThere are many notifications to go for There are many notifications
+            to go fore
+          </li>
+        </ul>
+        <div class="menu-title fbox-je">Mark as all read</div>
+      </div>
+    </div>
+
+    <div class="dropdown-container" dropdown>
+      <span
+        title="User Actions like Profile, Settings, Logout"
+        class="clickable icon-container"
+        (click)="drop = !drop"
+      >
+        <svg class="icon icon-white">
+          <use xlink:href="assets/svg/icons.svg#icon-h-dots"></use>
+        </svg>
+      </span>
+
+      <div class="dropdown" [class.is-active]="drop">
+        <div class="p-x p-y-md bg-grey2 sm">
+          <strong>Hi, {{ userName }}</strong>
+        </div>
+        <ul class="menu">
+          <li routerLink="/profile">Profile</li>
+          <li routerLink="/help">Help</li>
+        </ul>
+        <hr class="bg-grey2" />
+        <ul class="menu">
+          <li routerLink="/settings" title="Settings">Settings</li>
+          <li (click)="logout()">Log Out</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

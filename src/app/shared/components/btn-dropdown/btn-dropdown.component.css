@@ -1,0 +1,27 @@
+.fbox-btn {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+  padding-right: .63em;
+  font-size: .8em;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+.fbox-btn > span {
+  line-height: 1;
+}
+
+.fbox-btn .heading {
+  color: var(--blue);
+  border-right: 1px solid var(--border-color);
+  padding: .71em 1em;
+}
+
+.fbox-btn .selected {
+  flex-grow: 1;
+  padding:.71em 1em;
+  text-transform: capitalize;
+}
