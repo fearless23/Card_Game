@@ -1,19 +1,36 @@
-<ng-container *ngIf="length !== 0">
+<ng-container *ngIf="alerts.length !== 0">
   <div class="alerts-container">
-    <div *ngFor="let alert of alerts" class="alert {{ cssClass(alert) }}">
-      <span class="close" title="Close this Alert" (click)="removeAlert(alert)">
-        <svg class="icon">
-          <use xlink:href="assets/svg/icons.svg#icon-cross"></use>
-        </svg>
-      </span>
-
-      <div class="alert-icon">
-        <svg class="icon">
-          <use xlink:href="assets/svg/icons.svg#icon-bell"></use>
-        </svg>
+    <ng-container *ngFor="let alert of alerts">
+      <div class="notification {{ cssClass(alert) }}">
+        <button
+          class="delete"
+          title="Close this Alert"
+          (click)="removeAlert(alert)"
+        ></button>
+        {{ alert.message }}
       </div>
-
-      <div class="content">{{ alert.message }}</div>
-    </div>
+    </ng-container>
   </div>
 </ng-container>
+
+<!-- 
+   <div class="alert {{ cssClass(alert) }}">
+        <span
+          class="close"
+          title="Close this Alert"
+          (click)="removeAlert(alert)"
+        >
+          <svg class="icon">
+            <use xlink:href="assets/svg/icons.svg#icon-cross"></use>
+          </svg>
+        </span>
+
+        <div class="alert-icon">
+          <svg class="icon">
+            <use xlink:href="assets/svg/icons.svg#icon-bell"></use>
+          </svg>
+        </div>
+
+        <div class="content">{{ alert.message }}</div>
+      </div>
+ -->

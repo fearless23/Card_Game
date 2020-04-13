@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AlertsService } from '../../app/services/alerts.service';
+import { AlertsService, AlertType } from '../../app/services/alerts.service';
 
 @Component({
   selector: 'app-alerts',
@@ -8,59 +8,43 @@ import { AlertsService } from '../../app/services/alerts.service';
   styleUrls: ['./alerts.component.css'],
 })
 export class AlertsComponent implements OnInit {
-  alerts = [];
-  length: Number;
+  alerts: AlertType[] = [];
+
   constructor(private alertsService: AlertsService) {}
 
   ngOnInit() {
     this.alertsService.getAlert().subscribe((alert) => {
       if (!alert) {
-        // clear alerts when an empty alert is received
         this.alerts = [];
-        this.length = this.alerts.length;
         return;
       }
 
-      // add alert to array
       this.alerts.push(alert);
-      this.length = this.alerts.length;
       if (alert.autoClose) {
         setTimeout(() => {
           this.alerts = this.alerts.filter((x) => x !== alert);
-          this.length = this.alerts.length;
         }, 2000);
       }
-      /*
-      setTimeout(
-        ()=> {
-          this.alerts = this.alerts.filter(x => x !== alert);
-          this.length = this.alerts.length;
-        }, 2000);
-      */
     });
   }
 
-  removeAlert(alert) {
+  removeAlert(alert: AlertType) {
     this.alerts = this.alerts.filter((x) => x !== alert);
-    this.length = this.alerts.length;
   }
 
-  // func run inside HTML interpolation
-  cssClass(alert) {
+  cssClass(alert: AlertType) {
     if (!alert) {
       return;
     }
-
-    // return css class based on alert type
     switch (alert.type) {
       case 'success':
-        return 'success show';
+        return 'is-success show';
       case 'error':
-        return 'error show';
+        return 'is-danger show';
       case 'info':
-        return 'info show';
+        return 'is-info show';
       case 'warning':
-        return 'warning show';
+        return 'is-warning show';
     }
   }
 }

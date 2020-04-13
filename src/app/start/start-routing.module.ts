@@ -6,6 +6,7 @@ import { AuthGuard } from '../services/auth.guard';
 import { StartComponent } from './start.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from '../home/home.component';
+import { GameComponent } from '../game/game.component';
 
 // Routes
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'game/:id',
+        component: GameComponent,
       },
       // {
       //   path: 'projects', loadChildren: './projects/projects.module#ProjectsModule',
@@ -52,4 +57,9 @@ const routes: Routes = [
 })
 export class StartRoutingModule {}
 
-export const rc = [StartComponent, HeaderComponent, HomeComponent];
+export const rc = [
+  StartComponent,
+  HeaderComponent,
+  HomeComponent,
+  GameComponent,
+];

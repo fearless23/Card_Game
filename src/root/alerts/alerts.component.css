@@ -1,13 +1,14 @@
 .alerts-container {
   position: fixed;
-  left: 4.52em;
+  right: 0em;
   top: 1.19em;
   z-index: 200;
-  margin: 2em;
+  margin: 2em 0;
   max-height: 90vh;
   overflow: hidden;
 }
 
+/*
 .alert {
   position: relative;
   display: flex;
@@ -49,6 +50,16 @@ span.close {
 }
 
 .alert.show {
+  animation-name: flipInX;
+  animation-duration: 0.8s;
+}
+*/
+
+.notification {
+  width: 20em;
+}
+
+.notification.show {
   animation-name: flipInX;
   animation-duration: 0.8s;
 }

@@ -1,0 +1,10 @@
+.mainGameContainer {
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+#gameContainer {
+  width: 100%;
+  padding: 0em;
+}

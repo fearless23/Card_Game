@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { UserService } from '../../services/user.service';
-import { AlertsService } from 'src/app/services/alerts.service';
+import { AlertsService, AlertTypeEnum } from 'src/app/services/alerts.service';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
   drop = false;
   dropNotification = false;
   dropProjectSelector = false;
+
+  menuActive = false;
 
   onClickOutside(event: Object) {
     this.drop = false;
@@ -41,8 +43,16 @@ export class HeaderComponent implements OnInit {
     this.loginService.logout();
   }
 
+  toggleMenuActive() {
+    this.menuActive = !this.menuActive;
+  }
+
   aa() {
-    console.log("HI")
-    this.alertService.alert("info", "Hello")
+    const randNum = Math.floor(Math.random() * 4);
+    const randType = <AlertTypeEnum>(
+      ['success', 'info', 'warning', 'error'][randNum]
+    );
+    const msg = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.';
+    this.alertService.addAlert(randType, msg);
   }
 }

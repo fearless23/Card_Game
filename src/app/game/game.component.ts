@@ -4,7 +4,11 @@ import { MainScene } from './game';
 
 @Component({
   selector: 'app-game',
-  templateUrl: './game.component.html',
+  template: `
+    <div class="mainGameContainer">
+      <div id="gameContainer"></div>
+    </div>
+  `,
   styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
@@ -13,16 +17,16 @@ export class GameComponent implements OnInit {
   constructor() {
     this.config = {
       type: Phaser.AUTO,
-      height: 600,
-      width: 800,
+      height: 800,
+      width: 1200,
       scene: [MainScene],
       parent: 'gameContainer',
-      physics: {
-        default: 'arcade',
-        arcade: {
-          gravity: { y: 100 },
-        },
-      },
+      // physics: {
+      //   default: 'arcade',
+      //   arcade: {
+      //     gravity: { y: 100 },
+      //   },
+      // },
     };
   }
   ngOnInit(): void {
