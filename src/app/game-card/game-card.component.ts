@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { GameType } from '../start/db.types';
 
 @Component({
   selector: 'app-game-card',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-card.component.css'],
 })
 export class GameCardComponent implements OnInit {
-  name: string = 'Court Piece';
+  @Input('data') game: GameType;
   constructor() {}
 
   ngOnInit(): void {}

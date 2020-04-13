@@ -5,17 +5,37 @@
     </figure>
   </div>
   <div class="card-content">
-    <p class="title is-4 center">{{ name }}</p>
+    <div class="field is-grouped is-grouped-multiline">
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-dark">Type</span>
+          <span class="tag is-info">{{
+            game.private ? "Private" : "Public"
+          }}</span>
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-dark">Players</span>
+          <span class="tag is-success"
+            >{{ game.playersJoined }}/ {{ game.maxPlayers }}</span
+          >
+        </div>
+      </div>
+    </div>
+    <p class="title is-4 center">{{ game.name }}</p>
     <div class="content">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
       iaculis mauris.
+      <p>{{game.category}}</p>
       <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
     </div>
   </div>
   <footer class="card-footer">
     <a class="card-footer-item">2/4 joined</a>
     <a class="card-footer-item">
-      <button class="button is-link is-light">Join</button>
     </a>
+    <button class="button is-link is-light">Join</button>
   </footer>
 </div>

@@ -1,8 +1,12 @@
+.filtersBar {
+  padding: 1.75em;
+}
+
 .gameCardsContainer {
   display: grid;
   grid-template-columns: repeat(1, minmax(100px, 300px));
   grid-gap: 2em;
-  padding: 1em;
+  padding: 2em 2em 0 2em;
   justify-content: center;
 }
 

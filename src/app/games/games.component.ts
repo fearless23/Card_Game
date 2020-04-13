@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GamesService } from '../start/games.service';
+import { GameType } from '../start/db.types';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-games',
@@ -6,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./games.component.css'],
 })
 export class GamesComponent implements OnInit {
-  list: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
-  constructor() {}
+  constructor(private gamesSrv: GamesService) {}
+  games: Observable<GameType[]>;
+  category: string = 'ALL';
+  private: string = 'ALL';
+  ngOnInit(): void {
+    this.games = this.gamesSrv.games;
+  }
 
-  ngOnInit(): void {}
+  catChange(x: string) {
+    this.category = x;
+  }
+  pubChange(x: string) {
+    this.private = x;
+  }
 }

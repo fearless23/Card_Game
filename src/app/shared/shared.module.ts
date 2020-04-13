@@ -12,18 +12,18 @@ const modules = [
 ];
 
 // Shared Pipes: Declare and export
-// import { FilterPipe } from "./pipes/filter.pipe"
+import { FilterPipe } from './pipes/filter.pipe';
 // import { LengthPipe } from "./pipes/length.pipe"
-// import { ObservableFilterPipe } from "./pipes/observable-filter.pipe"
+import { ObservableFilterPipe } from './pipes/observable-filter.pipe';
 // import { StringSearchPipe } from "./pipes/string-search.pipe"
-// import { TrueFalsePipe } from "./pipes/true-false.pipe"
+import { TrueFalsePipe } from './pipes/true-false.pipe';
 
 const pipes = [
-  // FilterPipe,
+  FilterPipe,
   // LengthPipe,
-  // ObservableFilterPipe,
+  ObservableFilterPipe,
   // StringSearchPipe,
-  // TrueFalsePipe,
+  TrueFalsePipe,
 ];
 
 // Shared Directives: Declare and export
@@ -37,7 +37,7 @@ import { WTLoaderComponent } from './components/loader/loader.component';
 // import { BtnDropdownComponent } from './components/btn-dropdown/btn-dropdown.component';
 
 const cmps = [
-  WTLoaderComponent
+  WTLoaderComponent,
   // BtnDropdownComponent,
 ];
 

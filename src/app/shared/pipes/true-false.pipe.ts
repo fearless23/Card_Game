@@ -10,11 +10,11 @@ export class TrueFalsePipe implements PipeTransform {
   transform(foo: any, property: String, value?: String) {
     if (foo && value) {
       switch (value) {
-        case 'any':
+        case 'ALL':
           return foo;
-        case 'true':
+        case 'TRUE':
           return foo.filter(item => item[`${property}`]);
-        case 'false':
+        case 'FALSE':
           return foo.filter(item => !item[`${property}`]);
       }
     }

@@ -1,7 +1,69 @@
+<ng-template #categoryTmp>
+  <div class="field">
+    <label class="label has-text-centered">Category</label>
+    <div class="control has-text-centered">
+      <div class="select">
+        <select #t1 (change)="catChange(t1.value)">
+          <option value="ALL">All Games</option>
+          <option value="COURT PIECE">Court Piece</option>
+          <option value="LAKDI">Lakdi</option>
+          <option value="DEHLA PAKAD">Dehla Pakad</option>
+          <option value="SWEEP">Sweep</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #privacyTmp>
+  <div class="field">
+    <label class="label has-text-centered">Privacy</label>
+    <div class="control has-text-centered">
+      <label class="radio">
+        <input
+          type="radio"
+          name="private"
+          checked
+          (change)="pubChange('ALL')"
+        />
+        Any
+      </label>
+      <label class="radio">
+        <input type="radio" name="private" (change)="pubChange('TRUE')" />
+        Private
+      </label>
+      <label class="radio">
+        <input type="radio" name="private" (change)="pubChange('FALSE')" />
+        Public
+      </label>
+    </div>
+  </div>
+</ng-template>
+
+<section class="has-background-light">
+  <section class="container filtersBar">
+    <p class="title is-4 has-text-centered has-text-info">Games List</p>
+    <p class="subtitle is-6 has-text-centered">Join game of choice to play</p>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <ng-container *ngTemplateOutlet="categoryTmp"></ng-container>
+        <ng-container *ngTemplateOutlet="privacyTmp"></ng-container>
+      </div>
+    </div>
+  </section>
+</section>
+
 <section class="container">
   <section class="gameCardsContainer">
-    <ng-container *ngFor="let item of list">
-      <app-game-card></app-game-card>
+    <ng-container
+      *ngFor="
+        let game of games
+          | async
+          | filter: 'category':category
+          | bool: 'private':private
+      "
+    >
+      <app-game-card [data]="game"></app-game-card>
     </ng-container>
   </section>
 </section>
