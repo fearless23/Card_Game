@@ -9,27 +9,13 @@ import { AlertsService, AlertTypeEnum } from 'src/app/services/alerts.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  userName: String;
+  menuActive = false;
   constructor(
     private userService: UserService,
     private loginService: LoginService,
     private alertService: AlertsService
   ) {}
-
-  userName: String;
-
-  drop = false;
-  dropNotification = false;
-  dropProjectSelector = false;
-
-  menuActive = false;
-
-  onClickOutside(event: Object) {
-    this.drop = false;
-  }
-
-  onClickOutsideProjectSelector(e) {
-    this.dropProjectSelector = false;
-  }
 
   ngOnInit() {
     this.userService.user.subscribe((user) => {
@@ -37,6 +23,10 @@ export class HeaderComponent implements OnInit {
         this.userName = user.displayName;
       }
     });
+  }
+
+  onClickOutside(event: Object) {
+    this.menuActive = false;
   }
 
   logout() {

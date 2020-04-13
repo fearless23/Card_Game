@@ -33,11 +33,11 @@ import { DropdownDirective } from './directives/dropdown.directive';
 const directives = [ClickOutsideDirective, DropdownDirective];
 
 // Shared Components: Declare and export
-// import { WTLoaderComponent } from './components/loader/loader.component';
+import { WTLoaderComponent } from './components/loader/loader.component';
 // import { BtnDropdownComponent } from './components/btn-dropdown/btn-dropdown.component';
 
 const cmps = [
-  // WTLoaderComponent,
+  WTLoaderComponent
   // BtnDropdownComponent,
 ];
 
