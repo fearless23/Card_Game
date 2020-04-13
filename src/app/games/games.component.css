@@ -1,0 +1,19 @@
+.gameCardsContainer {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(100px, 300px));
+  grid-gap: 2em;
+  padding: 1em;
+  justify-content: center;
+}
+
+@media (min-width: 720px) {
+  .gameCardsContainer {
+    grid-template-columns: repeat(2, minmax(100px, 300px));
+  }
+}
+
+@media (min-width: 960px) {
+  .gameCardsContainer {
+    grid-template-columns: repeat(3, minmax(100px, 300px));
+  }
+}

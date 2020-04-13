@@ -11,6 +11,9 @@ import { NewGameComponent } from '../new-game/new-game.component';
 import { GameComponent } from '../game/game.component';
 import { GamePhaserComponent } from '../gamePhaser/game.component';
 
+// Non Routing Components
+import { GameCardComponent } from '../game-card/game-card.component';
+
 export const rc = [
   StartComponent,
   HeaderComponent,
@@ -19,6 +22,7 @@ export const rc = [
   NewGameComponent,
   GameComponent,
   GamePhaserComponent,
+  GameCardComponent,
 ];
 // Routes
 const routes: Routes = [

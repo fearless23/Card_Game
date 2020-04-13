@@ -69,11 +69,17 @@
         class="navbar-item"
         routerLink="/games/new"
         routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         + New Game
       </a>
 
-      <a class="navbar-item" routerLink="/games" routerLinkActive="is-active">
+      <a
+        class="navbar-item"
+        routerLink="/games"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         Games
       </a>
 
