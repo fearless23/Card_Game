@@ -10,11 +10,12 @@ import { Observable } from 'rxjs';
 })
 export class GamesComponent implements OnInit {
   constructor(private gamesSrv: GamesService) {}
-  games: Observable<GameType[]>;
+  games$: Observable<GameType[]>;
   category: string = 'ALL';
   private: string = 'ALL';
+
   ngOnInit(): void {
-    this.games = this.gamesSrv.games;
+    this.games$ = this.gamesSrv.games;
   }
 
   catChange(x: string) {

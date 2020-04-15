@@ -1,1 +1,51 @@
-<p>game works!</p>
+<ng-template #loading>
+  <app-loader></app-loader>
+</ng-template>
+
+<section class="container">
+  <section class="gameContainer">
+    <ng-container *ngIf="game$ | async as game; else loading">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <!-- <img [src]="imgSrc" alt="Placeholder image" /> -->
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="field is-grouped is-grouped-multiline">
+            <div class="control">
+              <div class="tags has-addons">
+                <span class="tag is-dark">Type</span>
+                <span class="tag is-info">{{
+                  game.private ? "Private" : "Public"
+                }}</span>
+              </div>
+            </div>
+
+            <div class="control">
+              <div class="tags has-addons">
+                <span class="tag is-dark">Players</span>
+                <span class="tag is-success"
+                  >{{ game.playersJoined }}/ {{ game.maxPlayers }}</span
+                >
+              </div>
+            </div>
+          </div>
+          <p class="title is-4 center">{{ game.category }}</p>
+          <p class="subtitle is-6 center">@{{ game.name }}</p>
+          <div class="content">
+            <p>Created by: {{ game.players[0].name }}</p>
+            <time datetime="2016-1-1">{{
+              game.timeCreated | date: "medium"
+            }}</time>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a class="card-footer-item button is-link" (click)="join(game.docId)"
+            >Join</a
+          >
+        </footer>
+      </div>
+    </ng-container>
+  </section>
+</section>

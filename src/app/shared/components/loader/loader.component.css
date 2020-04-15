@@ -1,72 +1,75 @@
-.loader2 {
-  overflow: hidden;
-  position: absolute; /* Container fluid is relative */
-  z-index: 10000;
-  top: 0;
-  height: calc(100vh - 10.89em);
-  width: calc(100% - 2em);
-  margin: 0 auto;
-  box-sizing: border-box;
-  /* background: var(--bg, #ffffff); */
-  animation-delay: 0.5s;
-}
-
-.loader2.inline{
-  position: relative;
-  height: 12.83em;
-  width: 100%;
-}
-
-.circle {
-  box-sizing: border-box;
-  width: 1.42em;
-  height: 1.42em;
-  border-radius: 50%;
-  margin: 0.5em;
-}
-
-.circle::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background-color: inherit;
-  opacity: 0.7;
-  animation: scale 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
-  transition: 0.5s all ease;
-  transform: scale(1);
-}
-
-.item-1 {
-  background-color: hsl(168, 58%, 61%);
-}
-.item-2 {
-  background-color: hsl(168, 58%, 51%);
-}
-.item-3 {
-  background-color: hsl(168, 58%, 41%);
-}
-
-.item-1:before {
-  animation-delay: 0.2s;
-}
-.item-2:before {
-  animation-delay: 0.4s;
-}
-.item-3:before {
-  animation-delay: 0.6s;
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(1);
-  }
-  50%,
-  75% {
-    transform: scale(2.5);
-  }
-  78%,
-  100% {
-    opacity: 0;
-  }
-}
+.fBox-c{
+  display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+ 
+ .fBox {
+  display: flex;
+   align-items: center;
+ }
+ 
+ .customLoader {
+   box-sizing: border-box;
+   z-index: 10000;
+   margin: 0 auto;
+   width: 100%;
+   height:100%;
+   overflow: hidden;
+   border: 1px solid black;
+ }
+ 
+ .circle {
+   box-sizing: border-box;
+   width: 1.42em;
+   height: 1.42em;
+   border-radius: 50%;
+   margin: 0.5em;
+ }
+ 
+ .circle::before {
+   content: "";
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+   background-color: inherit;
+   opacity: 0.7;
+   animation: scale 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
+   transition: 0.5s all ease;
+   transform: scale(1);
+ }
+ 
+ .item1 {
+   background-color: hsl(168, 58%, 61%);
+ }
+ .item2 {
+   background-color: hsl(168, 58%, 51%);
+ }
+ .item3 {
+   background-color: hsl(168, 58%, 41%);
+ }
+ 
+ .item1:before {
+   animation-delay: 0.2s;
+ }
+ .item2:before {
+   animation-delay: 0.4s;
+ }
+ .item3:before {
+   animation-delay: 0.6s;
+ }
+ 
+ @keyframes scale {
+   0% {
+     transform: scale(1);
+   }
+   50%,
+   75% {
+     transform: scale(2.5);
+   }
+   78%,
+   100% {
+     opacity: 0;
+   }
+ }
+ 

@@ -7,9 +7,11 @@ export type GameType = {
   maxPlayers: number;
   playersJoined: number;
   private: boolean;
+  password?: string;
   joinAble: boolean;
   docId: string;
-  players: { name: string; idx: string; admin: boolean }[];
+  players: { name: string; idx: number; admin: boolean }[];
+  timeCreated: number;
 };
 
 export type DBQueryType = {

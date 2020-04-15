@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import { AlertsService } from './alerts.service';
 
 @Injectable({ providedIn: 'root' })
@@ -9,7 +9,7 @@ export class LoginService {
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router,
-    private alertsService: AlertsService
+    private alertsSrv: AlertsService
   ) {}
 
   googleLogin() {
@@ -17,21 +17,19 @@ export class LoginService {
     return this.oAuthLogin(provider);
   }
 
-  private oAuthLogin(provider) {
-    return this.afAuth.auth
-      .signInWithPopup(provider)
-      .then((success) => this.router.navigate(['']))
-      .catch((err) => this.runError(err));
+  async logout() {
+    await this.afAuth.auth.signOut();
+    this.alertsSrv.addAlert('success', 'Logout success');
+    this.router.navigate(['/']);
   }
 
-  logout() {
-    this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/welcome']);
-    });
-  }
-
-  private runError(x) {
-    console.log(x.message);
-    this.alertsService.addAlert('error', x);
+  private async oAuthLogin(provider) {
+    try {
+      await this.afAuth.auth.signInWithPopup(provider);
+      this.alertsSrv.addAlert('success', 'Login success');
+      this.router.navigate(['/']);
+    } catch (error) {
+      this.alertsSrv.addAlert('error', error.message as string);
+    }
   }
 }

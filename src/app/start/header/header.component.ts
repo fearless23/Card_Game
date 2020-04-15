@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
-import { UserService } from '../../services/user.service';
-import { AlertsService, AlertTypeEnum } from 'src/app/services/alerts.service';
+import { UserService, User } from '../../services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,40 +9,23 @@ import { AlertsService, AlertTypeEnum } from 'src/app/services/alerts.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  userName: String;
+  user$: Observable<User>;
   menuActive = false;
-  constructor(
-    private userService: UserService,
-    private loginService: LoginService,
-    private alertService: AlertsService
-  ) {}
+  constructor(private userSrv: UserService, private loginSrv: LoginService) {}
 
   ngOnInit() {
-    this.userService.user.subscribe((user) => {
-      if (user) {
-        this.userName = user.displayName;
-      }
-    });
+    this.user$ = this.userSrv.user$;
   }
 
-  onClickOutside(event: Object) {
+  onClickOutside(event: object) {
     this.menuActive = false;
   }
 
   logout() {
-    this.loginService.logout();
+    this.loginSrv.logout();
   }
 
   toggleMenuActive() {
     this.menuActive = !this.menuActive;
-  }
-
-  aa() {
-    const randNum = Math.floor(Math.random() * 4);
-    const randType = <AlertTypeEnum>(
-      ['success', 'info', 'warning', 'error'][randNum]
-    );
-    const msg = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.';
-    this.alertService.addAlert(randType, msg);
   }
 }

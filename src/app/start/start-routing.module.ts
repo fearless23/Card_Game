@@ -13,6 +13,7 @@ import { GamePhaserComponent } from '../gamePhaser/game.component';
 
 // Non Routing Components
 import { GameCardComponent } from '../game-card/game-card.component';
+import { GamesFilterBarComponent } from '../games-filter-bar/games-filter-bar.component';
 
 export const rc = [
   StartComponent,
@@ -23,6 +24,7 @@ export const rc = [
   GameComponent,
   GamePhaserComponent,
   GameCardComponent,
+  GamesFilterBarComponent
 ];
 // Routes
 const routes: Routes = [

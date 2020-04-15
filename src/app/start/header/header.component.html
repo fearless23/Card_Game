@@ -1,37 +1,12 @@
-<!-- 
-<div class="main-topbar">
-  <h1 class="page-title">Card Game</h1>
-
-  <div class="fbox">
-    <div class="dropdown-container" dropdown>
-      <span
-        title="User Actions like Profile, Settings, Logout"
-        class="clickable icon-container"
-        (click)="drop = !drop"
-      >
-        <svg class="icon icon-white">
-          <use xlink:href="assets/svg/icons.svg#icon-h-dots"></use>
-        </svg>
-      </span>
-
-      <div class="dropdown" [class.is-active]="drop">
-        <div class="p-x p-y-md bg-grey2 sm">
-          <strong>Hi, {{ userName }}</strong>
-        </div>
-        <ul class="menu">
-          <li routerLink="/profile">Profile</li>
-          <li routerLink="/help">Help</li>
-        </ul>
-        <hr class="bg-grey2" />
-        <ul class="menu">
-          <li routerLink="/settings" title="Settings">Settings</li>
-          <li (click)="logout()">Log Out</li>
-        </ul>
-      </div>
+<ng-template #loginTmp>
+  <div class="navbar-item">
+    <div class="buttons">
+      <a class="button is-light is-small" [routerLink]="['/login']">
+        Login/Signup
+      </a>
     </div>
   </div>
-</div>
- -->
+</ng-template>
 
 <nav
   class="navbar is-link"
@@ -107,16 +82,28 @@
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary is-small">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light is-small">
-            Log in
-          </a>
+      <ng-container *ngIf="user$ | async as user; else loginTmp">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link"> Hi, {{ user.displayName }} </a>
+
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item">
+              Profile
+            </a>
+            <a class="navbar-item">
+              Settings
+            </a>
+            <a class="navbar-item">
+              Games History
+            </a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item" (click)="logout()">
+              Logout
+            </a>
+          </div>
         </div>
-      </div>
+      </ng-container>
+
       <!-- Login, show Profile, Image etc -->
     </div>
   </div>

@@ -10,13 +10,13 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class GamesService {
-  private shirtCollection: AngularFirestoreCollection<GameType>;
+  private gamesColl: AngularFirestoreCollection<GameType>;
   games: Observable<GameType[]>;
   constructor(private readonly afs: AngularFirestore) {
-    this.shirtCollection = afs.collection<GameType>('games', (ref) =>
-      ref.where('joinAble', '==', false)
+    this.gamesColl = afs.collection<GameType>('games', (ref) =>
+      ref.where('joinAble', '==', true)
     );
-    this.games = this.shirtCollection
+    this.games = this.gamesColl
       .snapshotChanges()
       .pipe(
         map((actions) => actions.map((a) => a.payload.doc.data() as GameType))
@@ -25,5 +25,21 @@ export class GamesService {
 
   filterGames(q: DBQueryType) {
     this.afs.collection<GameType>('games', (ref) => convertQuery(ref, q));
+  }
+
+  async addGame(g: GameType) {
+    try {
+      g.docId = this.afs.createId();
+      await this.afs.collection('games').doc(g.docId).set(g);
+      return g.docId;
+    } catch (error) {
+      return error.message as string;
+    }
+  }
+
+  getGame(docId: string) {
+    return this.afs.collection('games').doc(docId).valueChanges() as Observable<
+      GameType
+    >;
   }
 }

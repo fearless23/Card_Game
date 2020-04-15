@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 
 // From Angular
 import { CommonModule } from '@angular/common'; // ngif, ngfor
-// import { ReactiveFormsModule } from "@angular/forms"
+import { ReactiveFormsModule } from '@angular/forms';
 // import { FormsModule } from "@angular/forms" // ngmodel
 
 const modules = [
   CommonModule,
-  // ReactiveFormsModule,
+  ReactiveFormsModule,
   // FormsModule
 ];
 
@@ -17,9 +17,10 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { ObservableFilterPipe } from './pipes/observable-filter.pipe';
 // import { StringSearchPipe } from "./pipes/string-search.pipe"
 import { TrueFalsePipe } from './pipes/true-false.pipe';
-
+import { MultiFilterPipe } from './pipes/mulFilter.pipe';
 const pipes = [
   FilterPipe,
+  MultiFilterPipe,
   // LengthPipe,
   ObservableFilterPipe,
   // StringSearchPipe,
@@ -33,11 +34,12 @@ import { DropdownDirective } from './directives/dropdown.directive';
 const directives = [ClickOutsideDirective, DropdownDirective];
 
 // Shared Components: Declare and export
-import { WTLoaderComponent } from './components/loader/loader.component';
+import { LoaderComponent } from './components/loader/loader.component';
+
 // import { BtnDropdownComponent } from './components/btn-dropdown/btn-dropdown.component';
 
 const cmps = [
-  WTLoaderComponent,
+  LoaderComponent,
   // BtnDropdownComponent,
 ];
 

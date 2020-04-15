@@ -4,6 +4,7 @@ import { StartRoutingModule, rc } from './start-routing.module';
 import { GamesService } from './games.service';
 
 
+
 @NgModule({
   imports: [StartRoutingModule, SharedModule],
   declarations: [...rc],
