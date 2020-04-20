@@ -1,5 +1,3 @@
-
-
 .gameCardsContainer {
   display: grid;
   grid-template-columns: repeat(1, minmax(100px, 300px));
